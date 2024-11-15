@@ -1,0 +1,51 @@
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def enqueue(self, item):
+        self.items.append(item)
+        print(f"{item} 已加入队列。")
+
+    def dequeue(self):
+        if not self.is_empty():
+            item = self.items.pop(0)
+            print(f"{item} 已被处理。")
+            return item
+        else:
+            print("队列为空，无法处理。")
+            return None
+
+    def size(self):
+        return len(self.items)
+
+    def display(self):
+        if self.is_empty():
+            print("队列为空。")
+        else:
+            print("当前队列:", " -> ".join(self.items))
+
+
+# 主程序
+if __name__ == "__main__":
+    queue = Queue()
+
+    while True:
+        print("\n1. 添加顾客到队列")
+        print("2. 处理顾客")
+        print("3. 查看队列状态")
+        print("4. 退出")
+        choice = input("请选择操作: ")
+
+        if choice == '1':
+            customer = input("请输入顾客姓名: ")
+            queue.enqueue(customer)
+        elif choice == '2':
+            queue.dequeue()
+        elif choice == '3':
+            queue.display()
+        elif choice == '4':
+            print("退出程序。")
+            break
